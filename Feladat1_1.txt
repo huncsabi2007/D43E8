@@ -1,0 +1,69 @@
+4.1.: 
+SELECT * FROM tanulok
+4.2.: 
+SELECT nev FROM tanulok
+4.3.: 
+SELECT nev, osztaly FROM tanulok
+4.4.: 
+SELECT nev, atlag, hianyzas FROM tanulok
+4.5.:
+SELECT id, nev, varos, email FROM tanulok
+5.1.:
+SELECT nev FROM tanulok WHERE osztaly="10.A"
+5.2.:
+SELECT nev FROM tanulok WHERE atlag >=4
+5.3.:
+SELECT DISTINCT varos FROM tanulok
+5.4.:
+SELECT nev, atlag FROM tanulok ORDER BY atlag DESC
+5.5.:
+SELECT nev, atlag FROM tanulok WHERE varos="Budapest" ORDER BY atlag DESC
+6.1.:
+SELECT nev FROM tanulok WHERE eletkor >=17 AND atlag >=4 ORDER BY atlag DESC
+6.2.:
+SELECT nev, varos FROM tanulok WHERE varos="Budapest" OR varos="Érd"
+6.3.:
+SELECT nev, osztaly FROM tanulok WHERE NOT osztaly="10.A"
+6.4.:
+SELECT nev, osztaly, atlag FROM tanulok WHERE osztaly="10.A" OR osztaly="10.B" AND atlag>=3.5 ORDER BY atlag DESC
+6.5.:
+SELECT nev, varos, osztaly, atlag FROM tanulok WHERE (varos="Budapest" OR varos="Érd") AND atlag >=4 AND NOT osztaly="11.B" ORDER BY atlag DESC
+7.1.:
+SELECT id, email FROM tanulok WHERE email IS NULL
+7.2.:
+INSERT INTO tanulok
+(id, nev, osztaly, eletkor, varos, atlag, hianyzas, osztondijas, email)
+VALUES
+(0, 'Kovács Emma', '10.A', 16, 'Budapest', 4.0, 3, 0, NULL)
+SELECT * FROM tanulok WHERE nev="Kovács Emma"
+7.3.:
+UPDATE tanulok SET email="emma@iskola.hu" WHERE nev="Kovács Emma"
+SELECT id, nev, email FROM tanulok WHERE nev="Kovács Emma"
+7.4.:
+UPDATE tanulok SET atlag=4.5 AND osztondijas=1 WHERE nev="Kovács Emma"
+SELECT nev, atlag, osztondijas FROM tanulok WHERE nev="Kovács Emma"
+7.5.:
+DELETE FROM tanulok WHERE nev="Kovács Emma"
+SELECT COUNT(nev) FROM tanulok
+8.1.:
+SELECT id, nev FROM tanulok WHERE id LIMIT 3
+8.2.:
+SELECT DISTINCT nev, atlag FROM tanulok ORDER BY atlag DESC LIMIT 3
+8.3.:
+SELECT DISTINCT nev, hianyzas FROM tanulok ORDER BY hianyzas ASC LIMIT 2
+8.4.:
+SELECT DISTINCT nev, atlag FROM tanulok WHERE varos="Budapest" ORDER BY atlag DESC LIMIT 3
+8.5.:
+SELECT DISTINCT nev, osztaly, atlag FROM tanulok WHERE osztaly="11.A" OR osztaly="11.B" ORDER BY atlag DESC LIMIT 2
+9.1.:
+SELECT COUNT(nev) FROM tanulok
+9.2.:
+SELECT MIN(hianyzas) FROM tanulok
+9.3.:
+SELECT MAX(atlag) FROM tanulok
+9.4.:
+SELECT SUM(hianyzas) FROM tanulok
+9.5:
+SELECT SUM(atlag) FROM tanulok WHERE varos="Budapest"
+
+
